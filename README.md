@@ -322,6 +322,7 @@ This project helped strengthen my understanding of:
 
 ---
 
+
 # 👩‍💻 Author
 
 **Aakanshi Malik**
@@ -337,3 +338,12 @@ This project helped strengthen my understanding of:
 # ⭐ If you like this project...
 
 Give this repository a **⭐ Star** and feel free to fork it!
+
+
+![React](https://img.shields.io/badge/React-18-blue)
+
+![Node](https://img.shields.io/badge/Node.js-Express-green)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-success)
+
+![License](https://img.shields.io/badge/license-MIT-blue)
