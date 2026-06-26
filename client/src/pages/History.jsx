@@ -87,7 +87,7 @@ const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
 
     await axios.delete(
-      `http://localhost:5000/api/history/${id}`,
+      `${import.meta.env.VITE_API_URL}/api/history/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
