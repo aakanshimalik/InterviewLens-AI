@@ -19,7 +19,7 @@ const [loadingQuestion, setLoadingQuestion] = useState("");
       const token = localStorage.getItem("token");
 
 const response = await axios.get(
-  "http://localhost:5000/api/history",
+  `${import.meta.env.VITE_API_URL}/api/history`,
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -60,7 +60,7 @@ const response = await axios.get(
     const token = localStorage.getItem("token");
 
     const response = await axios.post(
-      "http://localhost:5000/api/generate-answer",
+      `${import.meta.env.VITE_API_URL}/api/generate-answer`,
       {
         question,
       },

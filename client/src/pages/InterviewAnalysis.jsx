@@ -38,7 +38,7 @@ function InterviewAnalysis() {
       formData.append("resume", resumeFile);
 
       const response = await axios.post(
-        "http://localhost:5000/api/upload-resume",
+        `${import.meta.env.VITE_API_URL}/api/upload-resume`,
         formData
       );
 
@@ -69,7 +69,7 @@ function InterviewAnalysis() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/analyze",
+        `${import.meta.env.VITE_API_URL}/api/analyze`,
         {
           resume,
           jobDescription,
@@ -183,7 +183,7 @@ function InterviewAnalysis() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/generate-answer",
+        `${import.meta.env.VITE_API_URL}/api/generate-answer`,
         {
           question,
         },
