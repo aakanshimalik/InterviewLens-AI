@@ -8,9 +8,9 @@ InterviewLens AI is a full-stack MERN application that analyzes interview perfor
 
 ## 🚀 Live Demo
 
-🌐 **Frontend:** *(Add your Netlify URL here)*
+🌐 **Frontend:** *https://interviewlens-ai.netlify.app/*
 
-💻 **Backend API:** *(Add your Render URL here)*
+💻 **Backend API:** *https://interviewlens-ai.onrender.com*
 
 ---
 
