@@ -19,8 +19,15 @@ function Analytics() {
 
   const fetchAnalytics = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/analytics`
+        `${import.meta.env.VITE_API_URL}/api/analytics`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setStats(response.data);
@@ -29,7 +36,19 @@ function Analytics() {
     }
   };
 
-  if (!stats) return <h2>Loading...</h2>;
+  if (!stats) {
+  return (
+    <div className="min-h-screen bg-[#071428] flex justify-center items-center">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+
+        <p className="text-slate-400">
+          Loading Analytics...
+        </p>
+      </div>
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-[#071428] pt-24 px-6">
@@ -87,7 +106,7 @@ function Analytics() {
           </h2>
 
           <p className="text-4xl font-bold text-indigo-400 mt-2">
-            {stats.improvement}
+            {stats.improvement}%
           </p>
         </div>
 
@@ -97,7 +116,7 @@ function Analytics() {
       <h2 className="text-3xl font-light text-white mb-6">
         Interview Score Trend
       </h2>
-
+  {stats.trendData.length > 0 ? (
   <ResponsiveContainer width="100%" height={300}>
     <LineChart data={stats.trendData}>
       <CartesianGrid
@@ -135,6 +154,11 @@ function Analytics() {
       />
     </LineChart>
   </ResponsiveContainer>
+  ) : (
+  <div className="h-[300px] flex items-center justify-center text-slate-500">
+    No interview data available yet.
+  </div>
+)}
 </div>
 <div className="grid md:grid-cols-2 gap-6 mt-10">
 
@@ -149,12 +173,22 @@ function Analytics() {
       Performance Summary
     </h3>
 
-    <p className="text-slate-400">
-      Your strongest performance reached
-      {` ${stats.bestScore}/100 `}
-      and your current average score is
-      {` ${stats.averageScore}/100`}.
-    </p>
+    <p className="text-slate-400 leading-7">
+  You've completed{" "}
+  <span className="text-cyan-400 font-semibold">
+    {stats.totalInterviews}
+  </span>{" "}
+  interview analyses.
+
+  Your best score is{" "}
+  <span className="text-green-400 font-semibold">
+    {stats.bestScore}/100
+  </span>{" "}
+  while maintaining an average of{" "}
+  <span className="text-cyan-400 font-semibold">
+    {stats.averageScore}/100
+  </span>.
+</p>
   </div>
 
   <div className="
@@ -168,11 +202,13 @@ function Analytics() {
       AI Recommendation
     </h3>
 
-    <p className="text-slate-400">
-      Continue practicing weak areas and
-      focus on communication, technical
-      depth, and recruiter expectations.
-    </p>
+    <p className="text-slate-400 leading-7">
+  {stats.averageScore >= 80
+    ? "Excellent performance. Continue refining communication and advanced interview techniques."
+    : stats.averageScore >= 65
+    ? "Good progress. Focus on missing technical skills and behavioral interview answers."
+    : "Your interview readiness needs improvement. Practice DSA, strengthen your resume alignment, and attempt more mock interviews."}
+</p>
   </div>
 
 </div>

@@ -2,7 +2,11 @@ import Interview from "../models/Interview.js";
 
 export const getAnalytics = async (req, res) => {
   try {
-    const interviews = await Interview.find();
+    const userId = req.user.id;
+
+    const interviews = await Interview.find({
+      user: userId,
+    }).sort({ createdAt: 1 });
 
     const totalInterviews = interviews.length;
 
