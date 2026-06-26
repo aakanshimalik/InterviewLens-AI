@@ -4,6 +4,14 @@
 
 InterviewLens AI is a full-stack MERN application that analyzes interview performance using AI. It compares a candidate's **Resume**, **Job Description**, and **Interview Responses** to identify weaknesses, missing skills, recruiter expectations, and provides an actionable improvement roadmap.
 
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb)
+
+![License](https://img.shields.io/badge/License-MIT-blue)
+
 ---
 
 ## 🚀 Live Demo
@@ -345,10 +353,3 @@ This project helped strengthen my understanding of:
 Give this repository a **⭐ Star** and feel free to fork it!
 
 
-![React](https://img.shields.io/badge/React-18-blue)
-
-![Node](https://img.shields.io/badge/Node.js-Express-green)
-
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-success)
-
-![License](https://img.shields.io/badge/license-MIT-blue)
