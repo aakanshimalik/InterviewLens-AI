@@ -14,6 +14,11 @@ InterviewLens AI is a full-stack MERN application that analyzes interview perfor
 
 ---
 
+## Screenshots
+<img width="1917" height="983" alt="image" src="https://github.com/user-attachments/assets/04e805e4-7cbc-4890-859c-e16d6f1f6b66" />
+
+---
+
 # 📌 Problem Statement
 
 Many candidates fail interviews without understanding **why** they were rejected.
