@@ -9,27 +9,18 @@ function Signup() {
     password: "",
   });
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+  e.preventDefault();
+
   try {
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/auth/signup`,
       form
     );
 
-    localStorage.setItem(
-      "token",
-      response.data.token
-    );
-
-    localStorage.setItem(
-      "name",
-      response.data.user.name
-    );
-
-    localStorage.setItem(
-  "email",
-  response.data.user.email
-);
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("name", response.data.user.name);
+    localStorage.setItem("email", response.data.user.email);
 
     toast.success("Account created successfully 🚀");
 
@@ -37,14 +28,13 @@ function Signup() {
   } catch (error) {
     console.log(error);
     toast.error(
-        error.response?.data?.message ||
-        "Signup Failed"
-        );
+      error.response?.data?.message || "Signup Failed"
+    );
   }
 };
 
   return (
- <form autoComplete="off">
+ <form autoComplete="off" onSubmit={handleSignup}>
   <div className="min-h-screen bg-[#071428] flex justify-center items-center px-4">
 
     <div
@@ -151,6 +141,7 @@ function Signup() {
       />
 
       <button
+       type="submit"
         onClick={handleSignup}
         className="
         w-full
