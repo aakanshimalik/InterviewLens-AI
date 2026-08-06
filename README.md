@@ -4,6 +4,10 @@
 
 InterviewLens AI is a full-stack MERN application that analyzes interview performance using AI. It compares a candidate's **Resume**, **Job Description**, and **Interview Responses** to identify weaknesses, missing skills, recruiter expectations, and provides an actionable improvement roadmap.
 
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker)
+
+![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx)
+
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
@@ -16,14 +20,34 @@ InterviewLens AI is a full-stack MERN application that analyzes interview perfor
 
 ## 🚀 Live Demo
 
-🌐 **Frontend:** *https://interviewlens-ai.netlify.app/*
+🌐 **Frontend:** https://interviewlens-ai.netlify.app/
 
-💻 **Backend API:** *https://interviewlens-ai.onrender.com*
+💻 **Backend API:** https://interviewlens-ai.onrender.com
+
+📦 **Dockerized:** Multi-stage Docker setup for frontend (Nginx) and backend (Node.js + Express) using Docker Compose.
+
+---
+
+## ⭐ Key Highlights
+
+- 🤖 AI-powered Interview Performance Analyzer
+- 📄 Resume vs Job Description Skill Gap Analysis
+- 📊 Analytics Dashboard with Performance Tracking
+- 📚 AI-generated Practice Questions & Model Answers
+- 🗺️ Personalized 7-Day Improvement Roadmap
+- 🔐 JWT Authentication & Email OTP Recovery
+- 📑 Downloadable PDF Interview Reports
+- 🐳 Fully Dockerized (Docker + Docker Compose + Nginx)
+- ☁️ Deployed using Netlify, Render & MongoDB Atlas
 
 ---
 
 ## Screenshots
 <img width="1917" height="983" alt="image" src="https://github.com/user-attachments/assets/04e805e4-7cbc-4890-859c-e16d6f1f6b66" />
+
+<img width="1903" height="923" alt="image" src="https://github.com/user-attachments/assets/4b0fe5b3-5076-4987-84b0-da479b9e5fad" />
+
+<img width="1898" height="920" alt="image" src="https://github.com/user-attachments/assets/e6c8a0d7-2255-4ced-b0da-9872f48a5d84" />
 
 ---
 
@@ -175,7 +199,7 @@ Built using Tailwind CSS.
 
 # 🛠️ Tech Stack
 
-## Frontend
+## 🎨Frontend
 
 * React.js
 * React Router DOM
@@ -187,7 +211,7 @@ Built using Tailwind CSS.
 
 ---
 
-## Backend
+## ⚙️Backend
 
 * Node.js
 * Express.js
@@ -196,17 +220,19 @@ Built using Tailwind CSS.
 * Multer
 * Nodemailer
 * Groq API
+* Docker
+* Docker Compose
 
 ---
 
-## Database
+## 🗄️Database
 
 * MongoDB
 * Mongoose
 
 ---
 
-## AI Integration
+## 🧠AI Integration
 
 * Groq API (Llama Model)
 
@@ -219,6 +245,30 @@ Used for:
 * Practice Questions
 * Model Answers
 
+### 🐳 DevOps
+
+- Docker
+- Docker Compose
+- Nginx
+
+## ☁️ Deployment
+
+Frontend:
+  - Netlify
+
+Backend:
+  - Render
+
+Database:
+  - MongoDB Atlas
+
+Containerization:
+  - Docker
+  - Docker Compose
+
+Web Server:
+  - Nginx
+
 ---
 
 # 📂 Project Structure
@@ -226,7 +276,9 @@ Used for:
 ```text
 InterviewLens-AI/
 │
-├── client/
+├── client
+│   ├── Dockerfile
+│   ├── nginx.conf
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
@@ -234,7 +286,8 @@ InterviewLens-AI/
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │
-├── server/
+├── server
+│   ├── Dockerfile
 │   ├── controllers/
 │   ├── routes/
 │   ├── middleware/
@@ -243,8 +296,44 @@ InterviewLens-AI/
 │   ├── config/
 │   └── server.js
 │
+├── docker-compose.yml
+│
 └── README.md
 ```
+
+---
+
+## 🏗️ Architecture
+
+```text
+        React + Tailwind CSS
+                 │
+                 ▼
+          Axios REST API
+                 │
+                 ▼
+     Express.js + Node.js
+                 │
+      ┌──────────┴──────────┐
+      ▼                     ▼
+ MongoDB Atlas         Groq AI API
+      │                     │
+      └──────────┬──────────┘
+                 ▼
+      AI Interview Analysis
+```
+---
+
+## 🔌 API Overview
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/signup` | Register User |
+| POST | `/api/auth/login` | Login User |
+| POST | `/api/analyze` | Analyze Interview |
+| POST | `/api/upload-resume` | Upload Resume |
+| GET | `/api/history` | Interview History |
+| GET | `/api/analytics` | Analytics Dashboard |
 
 ---
 
@@ -253,7 +342,7 @@ InterviewLens-AI/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/interviewlens-ai.git
+git clone https://github.com/aakanshimalik/InterviewLens-AI.git
 
 cd interviewlens-ai
 ```
@@ -283,6 +372,38 @@ npm run dev
 ```
 
 ---
+# 🐳 Docker Support
+
+InterviewLens AI is fully containerized for consistent local development and production deployment.
+
+## Run using Docker
+
+```bash
+docker compose up --build
+```
+
+Application URLs:
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:5173 |
+| Backend | http://localhost:5000 |
+
+Stop containers:
+
+```bash
+docker compose down
+```
+
+### Docker Features
+
+- Multi-stage frontend build
+- Nginx production server
+- Backend container with Express.js
+- Docker Compose orchestration
+- Environment variable support
+
+---
 
 # 🔑 Environment Variables
 
@@ -301,6 +422,10 @@ EMAIL_USER=YOUR_EMAIL
 
 EMAIL_PASS=YOUR_APP_PASSWORD
 ```
+---
+
+# Demo Credentials
+   Create your own account using Signup.
 
 ---
 
@@ -318,20 +443,19 @@ EMAIL_PASS=YOUR_APP_PASSWORD
 
 ---
 
-# 🎓 Learning Outcomes
+## 🎓 Key Learning Outcomes
 
-This project helped strengthen my understanding of:
-
-* MERN Stack Development
-* REST API Design
-* JWT Authentication
-* AI API Integration
-* MongoDB Data Modeling
-* Responsive UI Design
-* PDF Generation
-* Email Authentication
-* State Management
-* Full Stack Deployment
+- MERN Stack Architecture
+- RESTful API Design
+- JWT Authentication & Authorization
+- AI API Integration
+- Resume Parsing
+- MongoDB Data Modeling
+- Docker & Containerization
+- Production Deployment
+- Responsive UI Development
+- Analytics Dashboard Design
+- PDF Report Generation
 
 ---
 
@@ -345,6 +469,12 @@ This project helped strengthen my understanding of:
 💼 LinkedIn: https://www.linkedin.com/in/aakanshi-malik-996738298
 
 💻 GitHub: https://github.com/aakanshimalik
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
 
 ---
 
