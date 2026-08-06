@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_URL from "../config/api";
 
 function ResetPassword() {
   const { token } = useParams();
@@ -12,7 +13,7 @@ function ResetPassword() {
   const handleReset = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/reset-password/${token}`,
+        `${API_URL}/api/auth/reset-password/${token}`,
         {
           password,
         }

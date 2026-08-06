@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import jsPDF from "jspdf";
 import { downloadInterviewReport } from "../utils/pdfReport";
 import Documentation from "../pages/Documentation";
+import API_URL from "../config/api";
 
 function InterviewAnalysis() {
   const [resume, setResume] = useState("");
@@ -183,7 +184,7 @@ function InterviewAnalysis() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/generate-answer`,
+        `${API_URL}/api/generate-answer`,
         {
           question,
         },

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_URL from "../config/api";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -8,7 +9,7 @@ function ForgotPassword() {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/forgot-password`,
+        `${API_URL}/api/auth/forgot-password`,
         { email }
       );
 

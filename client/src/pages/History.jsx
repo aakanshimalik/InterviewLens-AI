@@ -3,6 +3,7 @@ import axios from "axios";
 import { downloadInterviewReport } from "../utils/pdfReport";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import API_URL from "../config/api";
 
 function History() {
   const [interviews, setInterviews] = useState([]);
@@ -19,7 +20,7 @@ const [loadingQuestion, setLoadingQuestion] = useState("");
       const token = localStorage.getItem("token");
 
 const response = await axios.get(
-  `${import.meta.env.VITE_API_URL}/api/history`,
+  `${API_URL}/api/history`,
   {
     headers: {
       Authorization: `Bearer ${token}`,

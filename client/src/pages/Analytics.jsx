@@ -9,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import API_URL from "../config/api";
 
 function Analytics() {
   const [stats, setStats] = useState(null);
@@ -22,7 +23,7 @@ function Analytics() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/analytics`,
+        `${API_URL}/api/analytics`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

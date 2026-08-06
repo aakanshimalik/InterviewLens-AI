@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API_URL from "../config/api";
 
 function Signup() {
   const [form, setForm] = useState({
@@ -14,7 +15,7 @@ function Signup() {
 
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/auth/signup`,
+      `${API_URL}/api/auth/signup`,
       form
     );
 
