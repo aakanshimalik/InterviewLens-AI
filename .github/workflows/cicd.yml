@@ -31,5 +31,8 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
+      - name: Restore environment
+        run: cp /home/ubuntu/interviewlens-env/server.env .env
+
       - name: Restart backend
         run: sudo pm2 restart backend --update-env
