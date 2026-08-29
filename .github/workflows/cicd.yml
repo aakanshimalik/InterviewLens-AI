@@ -34,3 +34,6 @@ jobs:
       - name: Test
         run: npm test
         continue-on-error: true
+      
+      - name: Restart backend with PM2
+        run: sudo pm2 restart backend
