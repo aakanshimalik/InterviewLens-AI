@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", async(req, res)=>{
-  res.join({
+  res.json({
     msg: "test was successful!"
   })
 });
