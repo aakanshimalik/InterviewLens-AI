@@ -48,6 +48,12 @@ app.get("/", (req, res) => {
   res.send("InterviewLens AI Backend Running");
 });
 
+app.get("/test", async(req, res)=>{
+  res.join({
+    msg: "test was successful!"
+  })
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
