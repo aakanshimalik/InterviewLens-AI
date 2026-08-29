@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 
 app.get("/test", async(req, res)=>{
   res.json({
-    msg: "UPDATE: test was successful!"
+    msg: "FINAL UPDATE: test was successful!"
   })
 });
 
