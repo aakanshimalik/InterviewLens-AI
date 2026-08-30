@@ -22,23 +22,30 @@ InterviewLens AI is a full-stack MERN application that analyzes interview perfor
 
 🌐 **Frontend:** https://interviewlens-ai.netlify.app/
 
-💻 **Backend API:** https://interviewlens-ai.onrender.com
+💻 **Backend API:** Deployed on AWS EC2
 
 📦 **Dockerized:** Multi-stage Docker setup for frontend (Nginx) and backend (Node.js + Express) using Docker Compose.
+
+🔄 CI/CD: Automated backend deployment using GitHub Actions with a self-hosted runner on AWS EC2 and PM2.
 
 ---
 
 ## ⭐ Key Highlights
 
-- 🤖 AI-powered Interview Performance Analyzer
-- 📄 Resume vs Job Description Skill Gap Analysis
-- 📊 Analytics Dashboard with Performance Tracking
-- 📚 AI-generated Practice Questions & Model Answers
-- 🗺️ Personalized 7-Day Improvement Roadmap
-- 🔐 JWT Authentication & Email OTP Recovery
-- 📑 Downloadable PDF Interview Reports
-- 🐳 Fully Dockerized (Docker + Docker Compose + Nginx)
-- ☁️ Deployed using Netlify, Render & MongoDB Atlas
+  - 🤖 AI-powered Interview Performance Analyzer
+  - 📄 Resume vs Job Description Skill Gap Analysis
+  - 📊 Analytics Dashboard with Performance Tracking
+  - 📚 AI-generated Practice Questions & Model Answers
+  - 🗺️ Personalized 7-Day Improvement Roadmap
+  - 🔐 JWT Authentication & Email OTP Recovery
+  - 📑 Downloadable PDF Interview Reports
+  - 🐳 Fully Dockerized (Docker + Docker Compose + Nginx)
+  - ☁️ Frontend deployed on Netlify
+  - ☁️ Backend deployed on AWS EC2
+  - 🔄 Automated CI/CD using GitHub Actions
+  - ☁️ Backend deployed on AWS EC2
+  - 🗄️ MongoDB Atlas database
+  - 🗄️ MongoDB Atlas database
 
 ---
 
@@ -250,14 +257,25 @@ Used for:
 - Docker
 - Docker Compose
 - Nginx
+- AWS EC2
+- Linux / Ubuntu
+- GitHub Actions
+- Self-Hosted GitHub Actions Runner
+- PM2
 
-## ☁️ Deployment
+## ☁️ Deployment 
 
 Frontend:
   - Netlify
 
 Backend:
-  - Render
+  - Platform: AWS EC2
+  - OS: Ubuntu
+  - Runtime: Node.js
+  - Process Manager: PM2
+  - Reverse Proxy / Web Server: Nginx
+  - CI/CD: GitHub Actions
+  - Runner: Self-hosted GitHub Actions Runner
 
 Database:
   - MongoDB Atlas
@@ -271,11 +289,108 @@ Web Server:
 
 ---
 
+## CI/CD
+  The backend deployment is automated using GitHub Actions.
+
+      Developer
+          │
+          │ git push
+          ▼
+      GitHub Repository
+          │
+          ▼
+      GitHub Actions
+          │
+          ▼
+      Self-Hosted Runner
+          │
+          │ AWS EC2
+          ▼
+      Checkout Latest Code
+          │
+          ▼
+      npm ci
+          │
+          ▼
+      Restore Production Environment
+          │
+          ▼
+      Build Application
+          │
+          ▼
+      PM2 Restart
+          │
+          ▼
+      Updated Backend
+
+    The workflow runs automatically when code is pushed to the main branch.
+
+  ### CI/CD Responsibilities
+
+      The pipeline performs:
+      
+      - Source-code checkout
+      - Node.js environment setup
+      - Clean dependency installation using npm ci
+      - Production environment restoration
+      - Application build
+      - Backend restart using PM2
+      - Automatic deployment to AWS EC2
+
+  ### Environment & Secret Management
+      
+      Production environment variables are not committed to GitHub.
+      
+      Sensitive configuration such as:
+      
+      GROQ_API_KEY
+      MONGO_URI
+      JWT_SECRET
+      EMAIL_USER
+      EMAIL_PASS
+      
+      is stored separately on the EC2 server and restored during deployment.
+      
+      This prevents sensitive credentials from being exposed in the Git repository while allowing the deployment pipeline to recreate the required runtime environment.
+
+### Deployment Architecture
+                        GitHub
+                          │
+                    git push main
+                          │
+                 ┌────────┴────────┐
+                 │                 │
+                 ▼                 ▼
+          GitHub Actions         Netlify
+                 │                 │
+                 ▼                 ▼
+        Self-Hosted Runner      React Frontend
+            AWS EC2                  │
+                 │                   │
+                 ▼                   │
+              PM2                    │
+                 │                   │
+                 ▼                   │
+          Express Backend ◄──────────┘
+                 │
+           ┌─────┴─────┐
+           ▼           ▼
+     MongoDB Atlas   Groq API
+
+    Result: A push to the main branch automatically updates the backend running on AWS EC2, while the frontend is deployed separately through Netlify.
+
+---
+
 # 📂 Project Structure
 
 ```text
 InterviewLens-AI/
-│
+|
+├── .github/
+│   └── workflows/
+│       └── cicd.yml
+|
+|
 ├── client
 │   ├── Dockerfile
 │   ├── nginx.conf
@@ -452,6 +567,11 @@ EMAIL_PASS=YOUR_APP_PASSWORD
 - Resume Parsing
 - MongoDB Data Modeling
 - Docker & Containerization
+- AWS EC2 Deployment
+- Linux Server Management
+- CI/CD with GitHub Actions
+- Self-Hosted GitHub Actions Runners
+- PM2 Process Management
 - Production Deployment
 - Responsive UI Development
 - Analytics Dashboard Design
