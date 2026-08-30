@@ -41,10 +41,8 @@ InterviewLens AI is a full-stack MERN application that analyzes interview perfor
   - 📑 Downloadable PDF Interview Reports
   - 🐳 Fully Dockerized (Docker + Docker Compose + Nginx)
   - ☁️ Frontend deployed on Netlify
-  - ☁️ Backend deployed on AWS EC2
   - 🔄 Automated CI/CD using GitHub Actions
   - ☁️ Backend deployed on AWS EC2
-  - 🗄️ MongoDB Atlas database
   - 🗄️ MongoDB Atlas database
 
 ---
